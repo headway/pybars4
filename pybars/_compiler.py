@@ -795,11 +795,11 @@ class Compiler:
     state in CodeBuilder.
     """
 
-    _handlebars = OMeta.makeGrammar(handlebars_grammar, {}, 'handlebars')
-    _builder = CodeBuilder()
-    _compiler = OMeta.makeGrammar(compile_grammar, {'builder': _builder})
-
     def __init__(self):
+        self._handlebars = OMeta.makeGrammar(handlebars_grammar, {}, 'handlebars')
+        self._builder = CodeBuilder()
+        self._compiler = OMeta.makeGrammar(compile_grammar, {'builder': self._builder})
+        
         self._helpers = {}
         self.template_counter = 1
 
